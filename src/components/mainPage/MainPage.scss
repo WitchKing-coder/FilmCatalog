@@ -1,0 +1,45 @@
+.filmCatalog{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+.film{
+  color: whitesmoke;
+  padding: 5px;
+  width: 12%;
+  margin-right: 5%;
+  height: 40vh;
+  img{
+    height: 78%;
+    max-width: 200px;
+  }
+  p{
+    margin: 10px 0 0 0 ;
+  }
+  .rating{
+    font-weight: 600;
+    font-size: larger;
+    margin-right: 5px;
+  }
+  .shortDesc{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+  }
+  &:hover{
+    cursor: pointer;
+  }
+}
+.pagination{
+  margin: 5px 0 15px 20px;
+  button{
+    background-color: inherit;
+    border: none;
+    color: white;
+  }
+  .active{
+    background-color: white;
+    color: black;
+  }
+}
