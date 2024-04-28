@@ -6,8 +6,12 @@
 .similarFilmsContainer{
   color: white;
   .similarFilm{
-    width: 13vw;
+    width: 11vw;
+    &:hover{
+      cursor: pointer;
+    }
     img{
+      width: 11vw;
       height: 30vh;
     }
     p{
