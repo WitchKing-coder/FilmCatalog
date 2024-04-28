@@ -1,17 +1,19 @@
-.mainInfo{
-  display: flex;
-  flex-wrap: wrap;
-  color: white;
-  justify-content: space-between;
-  margin: 0 40px;
-  .description{
-    width: 50%;
-  }
-  img{
-    width: 30vw;
-    height: 70vh;
-  }
-  a{
+.Container{
+  .mainInfo{
+    display: flex;
+    flex-wrap: wrap;
     color: white;
+    justify-content: space-between;
+    margin: 0 40px 40px 40px;
+    .description{
+      width: 50%;
+    }
+    img{
+      width: 16vw;
+      height: 40vh;
+    }
+    a{
+      color: white;
+    }
   }
 }

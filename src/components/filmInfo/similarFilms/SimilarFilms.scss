@@ -1,0 +1,16 @@
+.similarFilms{
+  height: 39vh;
+  display: flex;
+  justify-content: space-around;
+}
+.similarFilmsContainer{
+  color: white;
+  .similarFilm{
+    img{
+      height: 30vh;
+    }
+    p{
+      margin: 5px 0;
+    }
+  }
+}

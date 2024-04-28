@@ -1,40 +1,27 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import './MainPage.scss'
+import {getTopMovies} from "../../helpers/http/AsyncRequest";
+import {CatalogData} from "../../types/ICatalogData";
 
-interface FilmData {
-    kinopoiskId: number,
-    posterUrl: string,
-    nameRu: string,
-    ratingImdb: number
-}
-interface IMainPage {
-    setFilmId(num: number): void
+interface setFilmCode {
+    setFilmCode(props: number): void
 }
 
-const MainPage: FC<IMainPage> = ({setFilmId}) => {
+const MainPage: FC<setFilmCode> = ({setFilmCode}) => {
     const [page, setPage] = useState<number>(1)
     const [filmList, setFilmList] = useState<[]>()
     const navigate = useNavigate();
     const numOfPages = [1,2,3,4,5]
-    const getTopMovies = () => {
-        fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_MOVIES&page=${page}`, {
-            method: 'GET',
-            headers: {
-                'X-API-KEY': 'ea984fd9-0c14-4707-ae84-1ee818d9aedc',
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(json => setFilmList(json.items))
-    }
 
     useEffect(() => {
-     getTopMovies()
+     getTopMovies({setFilmList, page})
     }, [page])
+
     function chooseFilmHandler(kinopoiskId: number) {
-        setFilmId(kinopoiskId)
-        navigate("/filmInfo")
+        setFilmCode(kinopoiskId)
+        localStorage.setItem('filmCode', kinopoiskId.toString())
+        navigate(`/filmInfo/${kinopoiskId}`)
     }
 
     function pageChangeHandler(num: number) {
@@ -50,8 +37,7 @@ const MainPage: FC<IMainPage> = ({setFilmId}) => {
                 ))}
             </div>
             <div className="filmCatalog">
-                {filmList && filmList.map((item: FilmData) =>{
-                    console.log(item)
+                {filmList && filmList.map((item: CatalogData) =>{
                     return (
                         <div onClick={() => chooseFilmHandler(item.kinopoiskId)} className="film">
                             <img src={item.posterUrl} alt=""/>
